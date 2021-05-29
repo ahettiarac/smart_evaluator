@@ -9,18 +9,22 @@ from evaluator import serializers
 from .context_predictor.AbstractPredictor import AbstractPredictor
 from .context_predictor.PredictorRNN import PredictorRNN
 from .context_predictor.similarity_predictor import SimilarityPredictor
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class ModelConfigViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = ModelConfig.objects.all().order_by('model_name')
     serializer_class = ModelConfigSerializer
 
 class PredictResultConfigViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = PredictResult.objects.all().order_by('id')
     serializer_class = ModelPredictResultSerializer
     http_method_names = ['get']
 
 class SubmitResultConfigViewSet(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get(self,request,format=None):
         predictResults = PredictResult.objects.all().order_by('id')
