@@ -3,7 +3,7 @@
 import os
 import sys
 
-
+# this is to test PR template
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'smart_evaluator.settings')
